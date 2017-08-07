@@ -1,0 +1,153 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<link rel="import" href="../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<script src="/src/js/plottoriffic.js" as="plottoriffic"></script>
+
+<dom-module id="plottoriffic-web-app">
+  
+  <template>
+    <style>
+      :host {
+        --app-drawer-width: 408px;
+
+        --iron-autogrow-textarea: {
+          text-align: left;
+          background-color: #ffffff;
+        };
+
+      }
+
+   html, body {
+      margin: 0;
+      font-family: 'Roboto', 'Noto', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: #f1f1f1;
+      max-height: 368px;
+    }
+    app-toolbar {
+      background-color: #4285f4;
+      color: #fff;
+    }
+
+    paper-icon-button {
+      --paper-icon-button-ink-color: white;
+    }
+
+    paper-icon-button + [main-title] {
+      margin-left: 24px;
+    }
+    paper-progress {
+      display: block;
+      width: 100%;
+      --paper-progress-active-color: rgba(255, 255, 255, 0.5);
+      --paper-progress-container-color: transparent;
+    }
+    app-header {
+      @apply --layout-fixed-top;
+      color: #fff;
+      --app-header-background-rear-layer: {
+        background-color: #ef6c00;
+      };
+    }
+    app-drawer {
+      --app-drawer-scrim-background: rgba(0, 0, 100, 0.8);
+      --app-drawer-content-container: {
+        background-color: #eaeaea;
+        text-align: left;
+      }
+    }
+
+    .plot {
+      white-space: pre-wrap;
+    }
+
+    .content {
+      margin-top: 64px;
+      padding-top: 1em;
+    }
+
+    </style>
+    <app-header reveals="">
+      <app-toolbar>
+        <div main-title="">Plottoriffic!</div>
+        <paper-icon-button icon="settings" on-click="drawerToggle"></paper-icon-button>
+      </app-toolbar>
+    </app-header>
+    <app-drawer id="drawer" align="end" swipe-open="">
+      <div style="height: 100%; overflow: auto;">
+
+        <h3>Male Names</h3>
+        <iron-autogrow-textarea max-rows="10" rows="4" value="{{maleNames}}"></iron-autogrow-textarea>
+
+        <h3>Female Names</h3>
+        <iron-autogrow-textarea max-rows="10" rows="4" value="{{femaleNames}}"></iron-autogrow-textarea>
+
+      </div>
+    </app-drawer>
+
+    <div class="content">
+      <div class="card">
+        <h3>Plot <button type="button" on-click="handleClick">Generate!</button></h3>
+        <p class="plot">{{plot}}</p>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    
+    define('plottoriffic-web-app', ['plottoriffic'], function(plottoriffic){
+
+      /**
+       * @customElement
+       * @polymer
+       */
+      class PlottorifficWebApp extends Polymer.Element {
+        static get is() { return 'plottoriffic-web-app'; }
+        static get properties() {
+          return {
+            maleNames: {
+              type: String,
+              value: function(){ return plottoriffic.maleNames; }
+            },
+            femaleNames: {
+              type: String,
+              value: function(){ return plottoriffic.femaleNames; }
+            },
+            plot: {
+              type:String,
+              value: ''
+            }
+          };
+        }
+
+        drawerToggle() {
+          this.$.drawer.open();
+        }
+
+        handleClick() {
+          plottoriffic.maleNames = this.maleNames;
+          plottoriffic.femaleNames = this.femaleNames;
+          let p = plottoriffic.generate();
+          this.plot = [
+            'Cast:\r\n',
+            p.cast.map((s) => '(' + s.symbol + ') ' + s.name + '\t' + s.description).join('\r\n'), '\r\n\r\n',
+            'Plot Group: ', p.group, '\r\n',
+            'Plot SubGroup: ', p.subgroup, '\r\n',
+            'Plot Description: ', p.description, '\r\n',
+            '\r\n',
+            p.plot
+          ].join('');
+        }
+      }
+
+      window.customElements.define(PlottorifficWebApp.is, PlottorifficWebApp);
+    });
+  </script>
+</dom-module>

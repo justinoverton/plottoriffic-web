@@ -1,0 +1,34 @@
+{
+  "name": "plottoriffic-web",
+  "version": "1.0.0",
+  "description": "Web client for plottoriffic",
+  "keywords": [
+    "procedural",
+    "generative",
+    "fiction",
+    "story",
+    "plot"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinoverton/plottoriffic-web.git"
+  },
+  "author": "Justin Overton",
+  "bugs": {
+    "url": "https://github.com/justinoverton/plottoriffic-web/issues"
+  },
+  "homepage": "https://github.com/justinoverton/plottoriffic-web#readme",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "plottoriffic": "^2.0.0",
+    "seedrandom": "^2.4.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0"
+  }
+}
