@@ -6,9 +6,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../../polymer/polymer.html">
+--><link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-media-query/iron-media-query.html">
 <link rel="import" href="../app-layout-behavior/app-layout-behavior.html">
 
@@ -175,9 +173,7 @@ a shadow root):
       <slot></slot>
     </div>
 
-    <iron-media-query
-        query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]"
-        on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query>
+    <iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query>
   </template>
 
   <script>

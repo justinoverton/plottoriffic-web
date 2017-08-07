@@ -6,9 +6,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../../polymer/polymer.html">
+--><link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
 
 <!--
@@ -175,8 +173,7 @@ a shadow root):
 
     <!-- HACK(keanulee): Bind attributes here (in addition to :host) for styling to workaround Safari
     bug. https://bugs.webkit.org/show_bug.cgi?id=170762 -->
-    <div id="contentContainer" opened$="[[opened]]" persistent$="[[persistent]]"
-        position$="[[position]]" swipe-open$="[[swipeOpen]]">
+    <div id="contentContainer" opened$="[[opened]]" persistent$="[[persistent]]" position$="[[position]]" swipe-open$="[[swipeOpen]]">
       <slot></slot>
     </div>
   </template>
