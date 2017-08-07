@@ -64264,7 +64264,7 @@ function tostring(a) {
 // from the built-in RNG into the entropy pool.  Because we do
 // not want to interfere with deterministic PRNG state later,
 // seedrandom will not call math.random on its own again after
-// initialization.
+// initialization. 
 //
 mixkey(math.random(), pool);
 
