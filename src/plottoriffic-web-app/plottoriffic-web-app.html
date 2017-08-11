@@ -126,7 +126,11 @@
             }
           };
         }
-
+        ready(){
+          super.ready();
+          this.handleClick();
+        }
+        
         drawerToggle() {
           this.$.drawer.open();
         }

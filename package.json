@@ -24,7 +24,7 @@
   "homepage": "https://github.com/justinoverton/plottoriffic-web#readme",
   "license": "GPL-3.0",
   "dependencies": {
-    "plottoriffic": "^2.0.0",
+    "plottoriffic": "^2.1.0",
     "seedrandom": "^2.4.3"
   },
   "devDependencies": {
