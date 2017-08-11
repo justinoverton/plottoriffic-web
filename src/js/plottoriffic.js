@@ -1077,7 +1077,9 @@ module.exports={
 		"CH": "a child",
 		"AX": "a mysterious male person, or one of unusual character",
 		"BX": "a mysterious female person, or one of unusual character",
-		"X": "an inanimate object, an object of mystery, an uncertain quantity"
+		"X": "an inanimate object, an object of mystery, an uncertain quantity",
+		"U": "an uncle",		
+		"AU": "an aunt"
 	},
 	"conflicts": {
 		"5": {
@@ -63700,7 +63702,9 @@ const genderMap = {
 		"CH": "any",
 		"AX": "male",
 		"BX": "female",
-		"X": "none"
+        "X": "none",
+        "U": "male",		
+		"AU": "female"
 };
 
 function createRandomPicker(rng=defaultRng) {
